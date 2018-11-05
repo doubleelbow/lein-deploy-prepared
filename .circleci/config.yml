@@ -1,0 +1,41 @@
+defaults: &defaults
+  working_directory: ~/lein-deploy-prepared
+  docker:
+    - image: circleci/clojure:lein-2.8.1
+  environment:
+    LEIN_ROOT: "true"
+    JVM_OPTS: -Xmx3200m
+
+version: 2
+jobs:
+  build:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          key: lein-deploy-prepared-deps-{{ checksum "project.clj" }}
+      - run: lein deps
+      - save_cache:
+          paths:
+            - ~/.m2
+            - ~/.lein
+          key: lein-deploy-prepared-deps-{{ checksum "project.clj" }}
+      - run: lein do test, uberjar, pom
+      - persist_to_workspace:
+          root: ~/lein-deploy-prepared
+          paths:
+            - *
+  deploy:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/lein-deploy-prepared
+      - run: lein deploy-prepared
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build
+      - deploy:
+          context: clojars
