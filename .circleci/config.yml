@@ -22,14 +22,14 @@ jobs:
           key: lein-deploy-prepared-deps-{{ checksum "project.clj" }}
       - run: lein do test, uberjar, pom
       - persist_to_workspace:
-          root: ~/lein-deploy-prepared
+          root: .
           paths:
-            - *
+            - "*"
   deploy:
     <<: *defaults
     steps:
       - attach_workspace:
-          at: ~/lein-deploy-prepared
+          at: .
       - run: lein deploy-prepared
 
 workflows:
@@ -39,3 +39,8 @@ workflows:
       - build
       - deploy:
           context: clojars
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
