@@ -1,4 +1,4 @@
-# lein-deploy-prepared
+# lein-deploy-prepared [![CircleCI](https://circleci.com/gh/doubleelbow/lein-deploy-prepared.svg?style=svg)](https://circleci.com/gh/doubleelbow/lein-deploy-prepared) [![Clojars Project](https://img.shields.io/clojars/v/com.doubleelbow/lein-deploy-prepared.svg)](https://clojars.org/com.doubleelbow/lein-deploy-prepared)
 
 A Leiningen plugin for deploying already built jar to remote repository.
 
@@ -17,4 +17,4 @@ Plugin expects *pom.xml* in *project root* folder and *jar file* in *target* fol
 
 Copyright © 2018 doubleelbow
 
-Distributed under the Eclipse Public License either version 1.0.
+Distributed under the Eclipse Public License either version 1.0 or (at your option) any later version.
