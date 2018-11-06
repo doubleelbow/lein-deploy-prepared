@@ -1,4 +1,4 @@
-(defproject com.doubleelbow/lein-deploy-prepared "0.1.0-SNAPSHOT"
+(defproject com.doubleelbow/lein-deploy-prepared "0.1.0"
   :description "Deploy prepared jar file"
   :url "https://github.com/doubleelbow/lein-deploy-prepared"
   :license {:name "Eclipse Public License"

@@ -6,7 +6,7 @@ In deploy stage of CI process a jar prepared in build stage can be used for depl
 
 ## Usage
 
-Put `[lein-deploy-prepared "0.1.0-SNAPSHOT"]` into the `:plugins` vector of your `:user`
+Put `[lein-deploy-prepared "0.1.0"]` into the `:plugins` vector of your `:user`
 profile.
 
     $ lein deploy-prepared [repository]
